@@ -5,7 +5,7 @@
 	<name>Daily verses</name>
 	<summary>Toont een dagelijks Bijbelvers op het dashboard</summary>
 	<description>Toont een dagelijks Bijbelvers op het dashboard</description>
-	<version>1.0.4</version>
+	<version>1.0.5</version>
 	<licence>AGPL-3.0-or-later</licence>
 	<author mail="theo.langstraat@delta.nl" homepage="https://www.langstraatonline.nl">Theo Langstraat</author>
 	<namespace>DailyVerses</namespace>
