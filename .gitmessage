@@ -1,0 +1,33 @@
+# <type>(optional scope): <subject>
+# 
+# Types:
+#   feat      – nieuwe functionaliteit
+#   fix       – bugfix
+#   docs      – documentatie
+#   style     – formatting, geen codewijziging
+#   refactor  – code herschikking zonder functionaliteit te wijzigen
+#   test      – tests toegevoegd of aangepast
+#   chore     – onderhoud, scripts, dependencies
+#   build     – build systeem, npm, bundlers
+#   ci        – GitHub Actions, pipelines
+#   perf      – performance verbeteringen
+#   revert    – commit teruggedraaid
+#
+# Voorbeelden:
+#   feat: add RTL auto-detection
+#   fix(settings): correct JSON parsing
+#   docs: update README_RELEASE.md
+#   refactor(api): simplify axios wrapper
+#
+# Subject:
+#   - korte beschrijving
+#   - geen hoofdletter
+#   - geen punt aan het einde
+#
+# Body (optioneel):
+#   - waarom de wijziging nodig was
+#   - extra context
+#
+# Footer (optioneel):
+#   BREAKING CHANGE: beschrijving
+#

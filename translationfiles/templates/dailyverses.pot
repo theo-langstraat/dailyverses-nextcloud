@@ -1,0 +1,110 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Nextcloud package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Nextcloud 3.14159\n"
+"Report-Msgid-Bugs-To: translations\\@example.com\n"
+"POT-Creation-Date: 2026-06-02 15:10+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: /var/www/nextcloud/apps/dailyverses/lib/Dashboard/DailyversesWidget.php:34
+#: /var/www/nextcloud/apps/dailyverses/lib/Sections/DailyversesAdmin.php:32
+#: /var/www/nextcloud/apps/dailyverses/lib/Sections/DailyversesPersonal.php:28
+msgid "Daily Verses"
+msgstr ""
+
+#: /var/www/nextcloud/apps/dailyverses/specialAppInfoFakeDummyForL10nScript.php:2
+msgid "Daily verses"
+msgstr ""
+
+#: /var/www/nextcloud/apps/dailyverses/specialAppInfoFakeDummyForL10nScript.php:3
+msgid "Toont een dagelijks Bijbelvers op het dashboard"
+msgstr ""
+
+#: /var/www/nextcloud/apps/dailyverses/src/dashboardDailyverses.js:104
+msgid "Kan DailyVerses.net niet bereiken."
+msgstr ""
+
+#: /var/www/nextcloud/apps/dailyverses/src/dashboardDailyverses.js:115
+msgid "Fout bij laden van DailyVerses.net."
+msgstr ""
+
+#: /var/www/nextcloud/apps/dailyverses/src/settings.js:121
+msgid "Settings saved"
+msgstr ""
+
+#: /var/www/nextcloud/apps/dailyverses/src/settings.js:129
+msgid "Error saving settings"
+msgstr ""
+
+#: /var/www/nextcloud/apps/dailyverses/templates/adminSettings.php:22
+#: /var/www/nextcloud/apps/dailyverses/templates/personalSettings.php:25
+msgid "DailyVerses instellingen"
+msgstr ""
+
+#: /var/www/nextcloud/apps/dailyverses/templates/adminSettings.php:28
+msgid "Persoonlijke instellingen toestaan"
+msgstr ""
+
+#: /var/www/nextcloud/apps/dailyverses/templates/adminSettings.php:33
+#: /var/www/nextcloud/apps/dailyverses/templates/personalSettings.php:42
+#: /var/www/nextcloud/apps/dailyverses/templates/personalSettings.php:82
+msgid "Taal"
+msgstr ""
+
+#: /var/www/nextcloud/apps/dailyverses/templates/adminSettings.php:38
+#: /var/www/nextcloud/apps/dailyverses/templates/personalSettings.php:49
+#: /var/www/nextcloud/apps/dailyverses/templates/personalSettings.php:87
+msgid "Bijbelvertaling"
+msgstr ""
+
+#: /var/www/nextcloud/apps/dailyverses/templates/adminSettings.php:45
+#: /var/www/nextcloud/apps/dailyverses/templates/personalSettings.php:58
+#: /var/www/nextcloud/apps/dailyverses/templates/personalSettings.php:94
+msgid "Toon link naar DailyVerses.net"
+msgstr ""
+
+#: /var/www/nextcloud/apps/dailyverses/templates/adminSettings.php:50
+#: /var/www/nextcloud/apps/dailyverses/templates/personalSettings.php:63
+#: /var/www/nextcloud/apps/dailyverses/templates/personalSettings.php:99
+msgid "Modus"
+msgstr ""
+
+#: /var/www/nextcloud/apps/dailyverses/templates/adminSettings.php:54
+#: /var/www/nextcloud/apps/dailyverses/templates/personalSettings.php:67
+#: /var/www/nextcloud/apps/dailyverses/templates/personalSettings.php:103
+msgid "Verse of the Day"
+msgstr ""
+
+#: /var/www/nextcloud/apps/dailyverses/templates/adminSettings.php:59
+#: /var/www/nextcloud/apps/dailyverses/templates/personalSettings.php:72
+#: /var/www/nextcloud/apps/dailyverses/templates/personalSettings.php:108
+msgid "Random Verse"
+msgstr ""
+
+#: /var/www/nextcloud/apps/dailyverses/templates/adminSettings.php:63
+#: /var/www/nextcloud/apps/dailyverses/templates/personalSettings.php:112
+msgid "Opslaan"
+msgstr ""
+
+#: /var/www/nextcloud/apps/dailyverses/templates/personalSettings.php:31
+msgid "Persoonlijke instellingen zijn uitgeschakeld."
+msgstr ""
+
+#: /var/www/nextcloud/apps/dailyverses/templates/personalSettings.php:32
+msgid "De onderstaande instellingen worden beheerd door uw beheerder."
+msgstr ""
+
+#: /var/www/nextcloud/apps/dailyverses/templates/personalSettings.php:37
+msgid "Toon globale instellingen"
+msgstr ""

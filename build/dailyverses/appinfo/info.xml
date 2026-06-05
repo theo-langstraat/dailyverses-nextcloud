@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<info xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	  xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
+	<id>dailyverses</id>
+	<name>Daily verses</name>
+	<summary>Toont een dagelijks Bijbelvers op het dashboard</summary>
+	<description>Toont een dagelijks Bijbelvers op het dashboard</description>
+	<version>1.0.1</version>
+	<licence>AGPL-3.0-or-later</licence>
+	<author mail="theo.langstraat@delta.nl" homepage="https://www.langstraatonline.nl">Theo Langstraat</author>
+	<namespace>DailyVerses</namespace>
+	<category>tools</category>
+	<bugs>https://github.com/theo-langstraat/dailyverses/issues</bugs>
+	<dependencies>
+		<nextcloud min-version="33" max-version="33"/>
+	</dependencies>
+	<settings>
+		<!-- Admin instellingen -->
+		<admin>OCA\DailyVerses\Settings\DailyversesAdmin</admin>
+		<admin-section>OCA\DailyVerses\Sections\DailyversesAdmin</admin-section>
+		<!-- Persoonlijke instellingen -->
+		<personal>OCA\DailyVerses\Settings\DailyversesPersonal</personal>
+		<personal-section>OCA\DailyVerses\Sections\DailyversesPersonal</personal-section>
+	</settings>
+</info>

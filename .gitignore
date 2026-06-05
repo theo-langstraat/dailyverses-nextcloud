@@ -1,0 +1,31 @@
+# [IDE files](ca://s?q=Ignore_IDE_files)
+.idea/
+.vscode/
+*.iml
+*.zip
+nc-*
+
+# [Node / JavaScript build artifacts](ca://s?q=Ignore_JS_build_artifacts)
+node_modules/
+js/
+css/
+dist/
+*.map
+npm-debug.log
+*.log
+
+# [PHP dependencies and tooling](ca://s?q=Ignore_PHP_dependencies)
+vendor/
+vendor-bin/*/vendor/
+composer.lock
+.php-cs-fixer.cache
+
+# [PHPUnit cache](ca://s?q=Ignore_PHPUnit_cache)
+tests/.phpunit.cache
+
+# [Nextcloud build artifacts](ca://s?q=Ignore_Nextcloud_build_artifacts)
+openapi.json
+
+# [OS files](ca://s?q=Ignore_OS_files)
+.DS_Store
+Thumbs.db

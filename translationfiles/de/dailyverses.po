@@ -1,0 +1,111 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Nextcloud package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Nextcloud 3.14159\n"
+"Report-Msgid-Bugs-To: translations\\@example.com\n"
+"POT-Creation-Date: 2026-06-02 13:49+0200\n"
+"PO-Revision-Date: 2026-06-02 14:35+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.9\n"
+
+#: /var/www/nextcloud/apps/dailyverses/lib/Dashboard/DailyversesWidget.php:34
+#: /var/www/nextcloud/apps/dailyverses/lib/Sections/DailyversesAdmin.php:32
+#: /var/www/nextcloud/apps/dailyverses/lib/Sections/DailyversesPersonal.php:28
+msgid "Daily Verses"
+msgstr "Daily Verses"
+
+#: /var/www/nextcloud/apps/dailyverses/specialAppInfoFakeDummyForL10nScript.php:2
+msgid "Daily verses"
+msgstr "Daily verses"
+
+#: /var/www/nextcloud/apps/dailyverses/specialAppInfoFakeDummyForL10nScript.php:3
+msgid "Toont een dagelijks Bijbelvers op het dashboard"
+msgstr "Zeigt einen täglichen Bibelvers auf dem Dashboard"
+
+#: /var/www/nextcloud/apps/dailyverses/src/dashboardDailyverses.js:104
+msgid "Kan DailyVerses.net niet bereiken."
+msgstr "Kann DailyVerses.net nicht erreichen."
+
+#: /var/www/nextcloud/apps/dailyverses/src/dashboardDailyverses.js:115
+msgid "Fout bij laden van DailyVerses.net."
+msgstr "Fehler beim Laden von DailyVerses.net."
+
+#: /var/www/nextcloud/apps/dailyverses/src/settings.js:121
+msgid "Settings saved"
+msgstr "Einstellungen gespeichert"
+
+#: /var/www/nextcloud/apps/dailyverses/src/settings.js:129
+msgid "Error saving settings"
+msgstr "Fehler beim Speichern der Einstellungen"
+
+#: /var/www/nextcloud/apps/dailyverses/templates/adminSettings.php:22
+#: /var/www/nextcloud/apps/dailyverses/templates/personalSettings.php:21
+msgid "DailyVerses instellingen"
+msgstr "DailyVerses Einstellungen"
+
+#: /var/www/nextcloud/apps/dailyverses/templates/adminSettings.php:28
+msgid "Persoonlijke instellingen toestaan"
+msgstr "Persönliche Einstellungen zulassen"
+
+#: /var/www/nextcloud/apps/dailyverses/templates/adminSettings.php:33
+#: /var/www/nextcloud/apps/dailyverses/templates/personalSettings.php:38
+#: /var/www/nextcloud/apps/dailyverses/templates/personalSettings.php:78
+msgid "Taal"
+msgstr "Sprache"
+
+#: /var/www/nextcloud/apps/dailyverses/templates/adminSettings.php:38
+#: /var/www/nextcloud/apps/dailyverses/templates/personalSettings.php:45
+#: /var/www/nextcloud/apps/dailyverses/templates/personalSettings.php:83
+msgid "Bijbelvertaling"
+msgstr "Bibelübersetzung"
+
+#: /var/www/nextcloud/apps/dailyverses/templates/adminSettings.php:45
+#: /var/www/nextcloud/apps/dailyverses/templates/personalSettings.php:54
+#: /var/www/nextcloud/apps/dailyverses/templates/personalSettings.php:90
+msgid "Toon link naar DailyVerses.net"
+msgstr "Zeige den Link zu DailyVerses.net"
+
+#: /var/www/nextcloud/apps/dailyverses/templates/adminSettings.php:50
+#: /var/www/nextcloud/apps/dailyverses/templates/personalSettings.php:59
+#: /var/www/nextcloud/apps/dailyverses/templates/personalSettings.php:95
+msgid "Modus"
+msgstr "Modus"
+
+#: /var/www/nextcloud/apps/dailyverses/templates/adminSettings.php:54
+#: /var/www/nextcloud/apps/dailyverses/templates/personalSettings.php:63
+#: /var/www/nextcloud/apps/dailyverses/templates/personalSettings.php:99
+msgid "Verse of the Day"
+msgstr "Vers des Tages"
+
+#: /var/www/nextcloud/apps/dailyverses/templates/adminSettings.php:59
+#: /var/www/nextcloud/apps/dailyverses/templates/personalSettings.php:68
+#: /var/www/nextcloud/apps/dailyverses/templates/personalSettings.php:104
+msgid "Random Verse"
+msgstr "Zufälliger Vers"
+
+#: /var/www/nextcloud/apps/dailyverses/templates/adminSettings.php:63
+#: /var/www/nextcloud/apps/dailyverses/templates/personalSettings.php:108
+msgid "Opslaan"
+msgstr "Speichern"
+
+#: /var/www/nextcloud/apps/dailyverses/templates/personalSettings.php:27
+msgid "Persoonlijke instellingen zijn uitgeschakeld."
+msgstr "Persönliche Einstellungen sind deaktiviert."
+
+#: /var/www/nextcloud/apps/dailyverses/templates/personalSettings.php:28
+msgid "De onderstaande instellingen worden beheerd door uw beheerder."
+msgstr "Die untenstehenden Einstellungen werden von Ihrem Administrator verwaltet."
+
+#: /var/www/nextcloud/apps/dailyverses/templates/personalSettings.php:33
+msgid "Toon globale instellingen"
+msgstr "Globale Einstellungen anzeigen"
