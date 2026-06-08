@@ -1,5 +1,4 @@
 import { generateUrl } from '@nextcloud/router'
-import { languageOptions, languageLabels, versionLabels } from './language-options.js'
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -30,6 +29,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	const saveBtn = document.getElementById('saveSettings')
 	const saveStatus = document.getElementById('saveStatus')
+
+	//
+	// 1. OPTIES LADEN UIT PHP
+	//
+
+	let languageOptions = {}
+	let languageLabels = {}
+	let versionLabels = {}
+
+	try {
+		const response = await fetch(generateUrl('/apps/dailyverses/settings/options'))
+		const data = await response.json()
+
+		languageOptions = data.languageOptions
+		languageLabels = data.languageLabels
+		versionLabels = data.versionLabels
+
+	} catch (e) {
+		console.error('Error loading DailyVerses options:', e)
+		return
+	}
 
 	//
 	// INITIALISATIE
