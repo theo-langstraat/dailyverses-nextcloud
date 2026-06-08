@@ -27,12 +27,12 @@ class VerseService {
         $today = date('Y-m-d');
 
         // Settings-hash zodat cache ongeldig wordt bij wijziging
-        $settingsHash = md5("$language|$version|$mode");
+        $settingsHash = md5("$version|$mode");
 
         // random mag niet op datum cachen
         $dateKey = ($mode === 'random') ? uniqid() : $today;
 
-        $cacheKey = "verse:$uid:$settingsHash:$dateKey";
+        $cacheKey = "verse:$settingsHash:$dateKey";
 
         $cached = $this->cache->get($cacheKey);
         if ($cached !== null) {
