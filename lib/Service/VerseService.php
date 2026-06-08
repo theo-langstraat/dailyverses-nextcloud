@@ -36,9 +36,11 @@ class VerseService {
 
         $cached = $this->cache->get($cacheKey);
         if ($cached !== null) {
+            $data['text'] = 'Uit cache: ' . $data['text'];
             return json_decode($cached, true);
         }
 
+        $data['text'] = 'Niet uit cache: ' . $data['text'];
         $data = $this->fetchFromJsSnippet($version, $mode);
 
         $this->cache->set($cacheKey, json_encode($data), 86400);
