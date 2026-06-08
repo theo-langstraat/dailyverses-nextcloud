@@ -30,7 +30,7 @@ class VerseService {
         $settingsHash = md5("$language|$version|$mode");
 
         // random mag niet op datum cachen
-        $dateKey = ($mode === 'random') ? uniqid() : $today;
+        //$dateKey = ($mode === 'random') ? uniqid() : $today;
 
         $cacheKey = "verse:$uid:$settingsHash:$dateKey";
 

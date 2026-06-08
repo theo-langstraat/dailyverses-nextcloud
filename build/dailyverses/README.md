@@ -16,6 +16,28 @@ Displays a daily or random Bible verse from dailyverses.net on your Nextcloud da
 
 ---
 
+## Screenshots
+
+
+### Frontend
+<img src="doc/img/frontend-nl.png" width="1200">
+
+### Frontend Arabic
+<img src="doc/img/frontend-arabic.png" width="1200">
+
+### Backend – Admin Settings
+<img src="doc/img/backend-admin.png" width="1200">
+
+### Backend – Personal Settings
+
+#### Collapsed (initial view)
+<img src="doc/img/backend-personal-collapsed.png" width="1200">
+
+#### Expanded (by user)
+<img src="doc/img/backend-personal-expanded.png" width="1200">
+
+---
+
 ## **📦 Installation**
 1. Download or clone the app into your Nextcloud `apps/` directory:  
    ```
