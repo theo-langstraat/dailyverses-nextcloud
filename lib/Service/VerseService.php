@@ -38,6 +38,7 @@ class VerseService {
         if ($cached !== null) {
             $data = json_decode($cached, true);
             $data['text'] = 'Uit cache: ' . $data['text'];
+            return $data;
             // return json_decode($cached, true);
         }
 
