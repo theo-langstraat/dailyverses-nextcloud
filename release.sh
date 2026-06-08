@@ -58,6 +58,19 @@ update_info_xml_version() {
 }
 
 ##############################################
+# 2a UPDATE VERSION IN package.json
+##############################################
+update_package_json_version() {
+    local new_version="$1"
+    local file="package.json"
+
+    echo "📝 Updating package.json to version ${new_version}"
+
+    # Alleen de "version": "..." regel vervangen
+    sed -i "s/\"version\": \".*\"/\"version\": \"${new_version}\"/" "$file"
+}
+
+##############################################
 # 3. AUTOMATISCHE CHANGELOG GENERATOR
 ##############################################
 generate_changelog() {
@@ -149,11 +162,12 @@ ZIP_NAME="${APP_ID}-${NEW_VERSION}.zip"
 echo "🏷️ New version will be: v${NEW_VERSION}"
 
 ##############################################
-# 6. UPDATE info.xml VERSION + COMMIT
+# 6. UPDATE info.xml + package.json VERSION + COMMIT
 ##############################################
 update_info_xml_version "${NEW_VERSION}"
+update_package_json_version "${NEW_VERSION}"
 
-git add appinfo/info.xml
+git add appinfo/info.xml package.json
 git commit -m "chore: bump version to ${NEW_VERSION}"
 git push
 
