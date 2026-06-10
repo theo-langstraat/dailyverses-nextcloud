@@ -3,7 +3,30 @@ set -e
 
 APP_ID="dailyverses"
 
+##############################################
+# 0. VEILIGHEIDSCHECKS
+##############################################
 
+# Check: base version moet zijn meegegeven
+BASE_VERSION="$1"
+if [ -z "$BASE_VERSION" ]; then
+    echo "No base version supplied."
+    echo "Usage: ./release.sh 1.0"
+    exit 1
+fi
+
+# Check: branch mag niet diverged zijn t.o.v. origin/main
+git fetch origin >/dev/null 2>&1
+
+DIVERGENCE=$(git rev-list --left-right --count HEAD...origin/main | awk '{print $1 " " $2}')
+BEHIND=$(echo "$DIVERGENCE" | awk '{print $1}')
+AHEAD=$(echo "$DIVERGENCE" | awk '{print $2}')
+
+if [ "$AHEAD" != "0" ] || [ "$BEHIND" != "0" ]; then
+    echo "❌ Branch 'main' is diverged t.o.v. 'origin/main'."
+    echo "   Los dit eerst op (bijv. via 'git pull --rebase' of 'git reset --hard origin/main')."
+    exit 1
+fi
 
 ##############################################
 # 1. INTERACTIEVE CONVENTIONAL COMMITS PROMPT
@@ -68,7 +91,6 @@ update_package_json_version() {
 
     echo "Updating package.json to version ${new_version}"
 
-    # Alleen de "version": "..." regel vervangen
     sed -i "s/\"version\": \".*\"/\"version\": \"${new_version}\"/" "$file"
 }
 
@@ -126,18 +148,9 @@ else
     git push
 fi
 
-
 ##############################################
-# 4. RELEASE VERSION DETECTIE + AUTO TAG
+# 5. RELEASE VERSION DETECTIE + AUTO TAG
 ##############################################
-BASE_VERSION="$1"
-
-if [ -z "$BASE_VERSION" ]; then
-    echo "No base version supplied."
-    echo "Usage: ./release.sh 1.0"
-    exit 1
-fi
-
 CURRENT_XML_VERSION=$(grep -oPm1 "(?<=<version>)[^<]+" appinfo/info.xml)
 echo "Version in info.xml: ${CURRENT_XML_VERSION}"
 
@@ -199,7 +212,6 @@ if [ ! -f "${TAR_NAME}" ]; then
     echo "❌ TAR.GZ file not found: ${TAR_NAME}"
     exit 1
 fi
-
 
 ##############################################
 # 8. CHANGELOG GENEREREN
