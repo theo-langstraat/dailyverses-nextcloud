@@ -4,7 +4,7 @@ Displays a daily or random Bible verse from dailyverses.net on your Nextcloud da
 
 ---
 
-## **✨ Features**
+## **Features**
 - **Daily or random Bible verse** from dailyverses.net  
 - **26 supported languages**  
 - **Multiple Bible translations**  
@@ -38,7 +38,7 @@ Displays a daily or random Bible verse from dailyverses.net on your Nextcloud da
 
 ---
 
-## **📦 Installation**
+## **Installation**
 1. Download or clone the app into your Nextcloud `apps/` directory:  
    ```
    apps/dailyverses
@@ -48,7 +48,7 @@ Displays a daily or random Bible verse from dailyverses.net on your Nextcloud da
 
 ---
 
-## **⚙️ Configuration**
+## **Configuration**
 
 ### **Admin Settings**
 Admins can configure:
@@ -71,41 +71,18 @@ Available under:
 
 ---
 
-## **🖥️ Dashboard Widget**
+## **Dashboard Widget**
 The widget displays:
 - Today’s verse (or a random verse, if selected)
 - Translation and language
 - Optional link to dailyverses.net for full context
 
-The widget updates automatically every day.
+The widget updates automatically every day. In daily mode, the text is cached for one day.
 
 ---
 
-## **🌍 Supported Languages**
+## **Supported Languages**
 The app supports 26 languages, including English, Dutch, German, Danish, and more.  
 Translations are provided directly by dailyverses.net.
 
----
-
-## **🔧 Development**
-This app is built using:
-- Nextcloud AppFramework (PHP)
-- Vite for JavaScript bundling
-- Modern ES modules
-- JSON‑based l10n files
-
-Source code:  
-**[https://github.com/theo-langstraat/dailyverses-nextcloud](https://github.com/theo-langstraat/dailyverses-nextcloud)**
-
----
-
-## **🐞 Bug Reports & Feedback**
-Please report issues or feature requests here:  
-**`https://github.com/theo-langstraat/dailyverses-nextcloud/issues` [(github.com in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fgithub.com%2Ftheo-langstraat%2Fdailyverses-nextcloud%2Fissues")**
-
----
-
-## **📜 License**
-This project is licensed under the **AGPL‑3.0‑or‑later**.
-
-
+The backend supports the languages ​​German, English, Danish, and Dutch.

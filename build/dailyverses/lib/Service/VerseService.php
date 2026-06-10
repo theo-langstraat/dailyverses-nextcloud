@@ -36,17 +36,19 @@ class VerseService {
 
         $cached = $this->cache->get($cacheKey);
         if ($cached !== null) {
-            $data = json_decode($cached, true);
-            $data['text'] = 'Uit cache: ' . $data['text'];
-            return $data;
-            // return json_decode($cached, true);
+            // Cache test
+            // $data = json_decode($cached, true);
+            // $data['text'] = 'Uit cache: ' . $data['text'];
+            // return $data;
+            return json_decode($cached, true);
         }
 
         $data = $this->fetchFromJsSnippet($version, $mode);
 
         $this->cache->set($cacheKey, json_encode($data), 86400);
 
-        $data['text'] = 'Niet uit cache: ' . $data['text'];
+        // Cache test
+        // $data['text'] = 'Niet uit cache: ' . $data['text'];
         return $data;
     }
 

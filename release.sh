@@ -4,6 +4,30 @@ set -e
 APP_ID="dailyverses"
 
 ##############################################
+# 0. VEILIGHEIDSCHECKS
+##############################################
+
+# Check: werkdirectory moet schoon zijn
+if [ -n "$(git status --porcelain)" ]; then
+    echo "❌ Working tree is not clean."
+    echo "   Commit, stash of revert je wijzigingen voordat je een release draait."
+    exit 1
+fi
+
+# Check: branch mag niet diverged zijn t.o.v. origin/main
+git fetch origin >/dev/null 2>&1
+
+DIVERGENCE=$(git rev-list --left-right --count origin/main...HEAD | awk '{print $1 " " $2}')
+BEHIND=$(echo "$DIVERGENCE" | awk '{print $1}')
+AHEAD=$(echo "$DIVERGENCE" | awk '{print $2}')
+
+if [ "$AHEAD" != "0" ] || [ "$BEHIND" != "0" ]; then
+    echo "❌ Branch 'main' is diverged t.o.v. 'origin/main'."
+    echo "   Los dit eerst op (bijv. via 'git pull --rebase' of 'git reset --hard origin/main')."
+    exit 1
+fi
+
+##############################################
 # 1. INTERACTIEVE CONVENTIONAL COMMITS PROMPT
 ##############################################
 prompt_for_commit_message() {
@@ -116,8 +140,14 @@ echo "🔧 Preparing commit..."
 prompt_for_commit_message
 
 git add .
+if git diff --cached --quiet; then
+    echo "❌ Geen wijzigingen om te committen voor de release."
+    exit 1
+fi
+
 git commit -m "${COMMIT_MSG}"
 git push
+
 
 ##############################################
 # 4. RELEASE VERSION DETECTIE + AUTO TAG
@@ -157,7 +187,6 @@ PATCH=$(echo "$LATEST_TAG" | sed -E "s/v${BASE_VERSION}\.([0-9]+)/\1/")
 PATCH=$((PATCH + 1))
 
 NEW_VERSION="${BASE_VERSION}.${PATCH}"
-ZIP_NAME="${APP_ID}-${NEW_VERSION}.zip"
 
 echo "New version will be: v${NEW_VERSION}"
 
@@ -184,14 +213,15 @@ ZIP_NAME="${APP_ID}-${NEW_VERSION}.zip"
 TAR_NAME="${APP_ID}-${NEW_VERSION}.tar.gz"
 
 if [ ! -f "${ZIP_NAME}" ]; then
-    echo "ZIP file not found: ${ZIP_NAME}"
+    echo "❌ ZIP file not found: ${ZIP_NAME}"
     exit 1
 fi
 
 if [ ! -f "${TAR_NAME}" ]; then
-    echo "TAR.GZ file not found: ${TAR_NAME}"
+    echo "❌ TAR.GZ file not found: ${TAR_NAME}"
     exit 1
 fi
+
 
 ##############################################
 # 8. CHANGELOG GENEREREN
