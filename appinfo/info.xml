@@ -61,7 +61,7 @@ Translations are provided directly by dailyverses.net.
 
 The backend supports the languages ​​German, English, Danish, and Dutch.
 ]]></description>
-	<version>1.0.19</version>
+	<version>1.0.20</version>
 	<licence>AGPL-3.0-or-later</licence>
 	<author mail="theo.langstraat@delta.nl" homepage="https://www.langstraatonline.nl/nl/tools/nextcloud-apps">Theo Langstraat</author>
     <documentation>
