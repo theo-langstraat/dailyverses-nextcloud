@@ -7,7 +7,7 @@ APP_ID="dailyverses"
 # 1. INTERACTIEVE CONVENTIONAL COMMITS PROMPT
 ##############################################
 prompt_for_commit_message() {
-    echo "📝 Select commit type:"
+    echo "Select commit type:"
     echo "1) feat      – nieuwe functionaliteit"
     echo "2) fix       – bugfix"
     echo "3) docs      – documentatie"
@@ -31,14 +31,14 @@ prompt_for_commit_message() {
         7) TYPE="chore" ;;
         8) TYPE="build" ;;
         9) TYPE="ci" ;;
-        *) echo "❌ Invalid choice"; exit 1 ;;
+        *) echo "Invalid choice"; exit 1 ;;
     esac
 
     echo ""
     read -p "Enter commit subject: " SUBJECT
 
     if [ -z "$SUBJECT" ]; then
-        echo "❌ Subject cannot be empty."
+        echo "Subject cannot be empty."
         exit 1
     fi
 
@@ -52,7 +52,7 @@ update_info_xml_version() {
     local new_version="$1"
     local file="appinfo/info.xml"
 
-    echo "📝 Updating appinfo/info.xml to version ${new_version}"
+    echo "Updating appinfo/info.xml to version ${new_version}"
 
     sed -i "s|<version>.*</version>|<version>${new_version}</version>|" "$file"
 }
@@ -64,7 +64,7 @@ update_package_json_version() {
     local new_version="$1"
     local file="package.json"
 
-    echo "📝 Updating package.json to version ${new_version}"
+    echo "Updating package.json to version ${new_version}"
 
     # Alleen de "version": "..." regel vervangen
     sed -i "s/\"version\": \".*\"/\"version\": \"${new_version}\"/" "$file"
@@ -77,7 +77,7 @@ generate_changelog() {
     local last_tag="$1"
     local new_version="$2"
 
-    echo "📝 Generating changelog (Conventional Commits)..."
+    echo "Generating changelog (Conventional Commits)..."
 
     if [ -z "$last_tag" ]; then
         RANGE=""
@@ -125,33 +125,33 @@ git push
 BASE_VERSION="$1"
 
 if [ -z "$BASE_VERSION" ]; then
-    echo "❌ No base version supplied."
+    echo "No base version supplied."
     echo "Usage: ./release.sh 1.0"
     exit 1
 fi
 
 CURRENT_XML_VERSION=$(grep -oPm1 "(?<=<version>)[^<]+" appinfo/info.xml)
-echo "ℹ️ Version in info.xml: ${CURRENT_XML_VERSION}"
+echo "Version in info.xml: ${CURRENT_XML_VERSION}"
 
-echo "🔍 Detecting latest tag for ${BASE_VERSION}.x ..."
+echo "Detecting latest tag for ${BASE_VERSION}.x ..."
 
 LATEST_TAG=$(git tag -l "v${BASE_VERSION}.*" | sort -V | tail -n 1)
 
 if [ -z "$LATEST_TAG" ]; then
-    echo "⚠️ No tags found for ${BASE_VERSION}.x"
+    echo "No tags found for ${BASE_VERSION}.x"
 
     if [[ "${CURRENT_XML_VERSION}" == ${BASE_VERSION}.* ]]; then
-        echo "🏷️ Creating initial tag v${CURRENT_XML_VERSION} (from info.xml)"
+        echo "Creating initial tag v${CURRENT_XML_VERSION} (from info.xml)"
         git tag -a "v${CURRENT_XML_VERSION}" -m "Initial version ${CURRENT_XML_VERSION}"
         git push origin "v${CURRENT_XML_VERSION}"
         LATEST_TAG="v${CURRENT_XML_VERSION}"
     else
-        echo "❌ info.xml version (${CURRENT_XML_VERSION}) does not match base version (${BASE_VERSION})"
+        echo "info.xml version (${CURRENT_XML_VERSION}) does not match base version (${BASE_VERSION})"
         exit 1
     fi
 fi
 
-echo "ℹ️ Latest tag found: ${LATEST_TAG}"
+echo "Latest tag found: ${LATEST_TAG}"
 
 PATCH=$(echo "$LATEST_TAG" | sed -E "s/v${BASE_VERSION}\.([0-9]+)/\1/")
 PATCH=$((PATCH + 1))
@@ -159,7 +159,7 @@ PATCH=$((PATCH + 1))
 NEW_VERSION="${BASE_VERSION}.${PATCH}"
 ZIP_NAME="${APP_ID}-${NEW_VERSION}.zip"
 
-echo "🏷️ New version will be: v${NEW_VERSION}"
+echo "New version will be: v${NEW_VERSION}"
 
 ##############################################
 # 6. UPDATE info.xml + package.json VERSION + COMMIT
@@ -174,14 +174,22 @@ git push
 ##############################################
 # 7. BUILD + PACKAGE
 ##############################################
-echo "⚙️ Running build..."
+echo "Running build..."
 ./build.sh
 
-echo "📦 Packaging..."
+echo "Packaging..."
 ./package.sh "${NEW_VERSION}"
 
+ZIP_NAME="${APP_ID}-${NEW_VERSION}.zip"
+TAR_NAME="${APP_ID}-${NEW_VERSION}.tar.gz"
+
 if [ ! -f "${ZIP_NAME}" ]; then
-    echo "❌ ZIP file not found: ${ZIP_NAME}"
+    echo "ZIP file not found: ${ZIP_NAME}"
+    exit 1
+fi
+
+if [ ! -f "${TAR_NAME}" ]; then
+    echo "TAR.GZ file not found: ${TAR_NAME}"
     exit 1
 fi
 
@@ -193,19 +201,21 @@ generate_changelog "${LATEST_TAG}" "${NEW_VERSION}"
 ##############################################
 # 9. TAGGEN + RELEASE
 ##############################################
-echo "🏷️ Creating Git tag v${NEW_VERSION}..."
+echo "Creating Git tag v${NEW_VERSION}..."
 git tag -a "v${NEW_VERSION}" -m "Release v${NEW_VERSION}"
 git push origin "v${NEW_VERSION}"
 
-echo "🚀 Creating GitHub Release..."
-gh release create "v${NEW_VERSION}" "${ZIP_NAME}" \
+echo "Creating GitHub Release..."
+gh release create "v${NEW_VERSION}" \
+  "${ZIP_NAME}" \
+  "${TAR_NAME}" \
   --title "v${NEW_VERSION}" \
   --notes-file "CHANGELOG_NEW.md"
 
 ##############################################
 # 10. CHANGELOG UPDATEN IN DE REPO
 ##############################################
-echo "📚 Updating CHANGELOG.md..."
+echo "Updating CHANGELOG.md..."
 if [ -f CHANGELOG.md ]; then
     cat CHANGELOG.md >> CHANGELOG_NEW.md
 fi
@@ -214,4 +224,4 @@ git add CHANGELOG.md
 git commit -m "docs: update changelog for v${NEW_VERSION}"
 git push
 
-echo "✅ Release v${NEW_VERSION} published successfully!"
+echo "Release v${NEW_VERSION} published successfully!"

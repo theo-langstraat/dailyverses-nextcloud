@@ -5,7 +5,7 @@ APP_ID="dailyverses"
 VERSION="$1"
 
 if [ -z "$VERSION" ]; then
-    echo "❌ No version supplied."
+    echo "No version supplied."
     echo "Usage: ./package.sh 1.0.0"
     exit 1
 fi
@@ -13,12 +13,13 @@ fi
 BUILD_ROOT="build"
 BUILD_DIR="${BUILD_ROOT}/${APP_ID}"
 ZIP_NAME="${APP_ID}-${VERSION}.zip"
+TAR_NAME="${APP_ID}-${VERSION}.tar.gz"
 
-echo "🧹 Cleaning previous build directory..."
+echo "Cleaning previous build directory..."
 rm -rf "${BUILD_ROOT}"
 mkdir -p "${BUILD_DIR}"
 
-echo "📁 Copying production files..."
+echo "Copying production files..."
 
 # Required Nextcloud app folders
 for dir in appinfo lib templates l10n img; do
@@ -32,7 +33,7 @@ for dir in js css; do
     if [ -d "$dir" ]; then
         cp -r "$dir" "${BUILD_DIR}/"
     else
-        echo "❌ Missing frontend build output: $dir"
+        echo "Missing frontend build output: $dir"
         echo "Run ./build.sh first."
         exit 1
     fi
@@ -45,7 +46,7 @@ for file in README.md CHANGELOG.md LICENSE; do
     fi
 done
 
-echo "🚫 Removing development files..."
+echo "Removing development files..."
 rm -rf "${BUILD_DIR}/tests" \
        "${BUILD_DIR}/node_modules" \
        "${BUILD_DIR}/vendor" \
@@ -53,10 +54,16 @@ rm -rf "${BUILD_DIR}/tests" \
        "${BUILD_DIR}/translationfiles" \
        "${BUILD_DIR}/openapi.json"
 
-echo "📦 Creating ZIP package: ${ZIP_NAME}"
+echo "Creating ZIP package: ${ZIP_NAME}"
 cd "${BUILD_ROOT}"
 zip -r "../${ZIP_NAME}" "${APP_ID}" > /dev/null
+
+echo "Creating tar.gz package: ${TAR_NAME}"
+tar -czf "../${TAR_NAME}" "${APP_ID}"
+
 cd ..
 
-echo "✅ Package created successfully!"
-echo "📁 File: ${ZIP_NAME}"
+echo "Packages created successfully!"
+echo "ZIP: ${ZIP_NAME}"
+echo "TAR.GZ: ${TAR_NAME}"
+
