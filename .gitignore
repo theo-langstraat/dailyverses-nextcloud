@@ -5,6 +5,7 @@
 *.zip
 *.tar.gz
 nc-*
+build/
 
 # [Node / JavaScript build artifacts](ca://s?q=Ignore_JS_build_artifacts)
 node_modules/
